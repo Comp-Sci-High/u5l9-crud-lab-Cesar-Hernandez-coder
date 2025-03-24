@@ -26,10 +26,23 @@ const Country = mongoose.model("Country", countrySchema, "Countries");
 
 // Create a POST route for "/add/country" that adds a country using the request body (3 points)
 // Use postman to add at least THREE different countries
+app.post("/add/country", async (req,res)=> {
+  const newCountries = new Country ({
+    country: req.body.country,
+    flagURL: req.body.flagURL,
+    population: req.body.population,
+    officialLanguage: req.body.officialLanguage,
+    hasNuclearWeapons: req.body.hasNuclearWeapons
+   
+  }).save()
 
+})
 
 // Create a GET route for "/" that renders countries.ejs with every country from the Countries collection (1 point)
-
+app.get("/", async (req, res) => {
+  const maps = await User.find({})
+  res.render("countries.ejs", )
+})
 
 // Go to countries.ejs and follow the tasks there (2 points)
 
