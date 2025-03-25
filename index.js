@@ -41,7 +41,7 @@ app.post("/add/country", async (req,res)=> {
 // Create a GET route for "/" that renders countries.ejs with every country from the Countries collection (1 point)
 app.get("/", async (req, res) => {
   const maps = await User.find({})
-  res.render("countries.ejs", )
+  res.render("countries.ejs", maps)
 })
 
 // Go to countries.ejs and follow the tasks there (2 points)
@@ -49,17 +49,23 @@ app.get("/", async (req, res) => {
 
 // Create a dynamic PATCH route handler for "/update/{name}" that modifies the population of the country specified in the path (3 points)
 // Test this route on post man
-
+app.patch("/update/:name", async (req,res)=> {
+  const response = await Country.findOneAndUpdate({name: req.params.name}, {population: req.body.population})
+  res.json(response);
+})
 
 
 // Create a DELETE route handler for "/delete/country" that deletes a country of your choice (3 points)
 // Test this route on post man
-
+app.delete("/delete/country", async (req,res)=> {
+  const response1 = await Country.findOneAndDelete({country: "china"})
+  res.json(response1);
+})
 
 async function startServer() {
   
     // add your SRV string with a database called countries
-  await mongoose.connect("...");
+  await mongoose.connect("countries");
 
   app.listen(3000, () => {
     console.log("Server is running");

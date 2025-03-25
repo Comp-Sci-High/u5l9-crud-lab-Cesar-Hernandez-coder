@@ -16,16 +16,16 @@
             <img src="<%= contries[i].flagURL<%>" alt="USA flag">
             <div class="info">
                <!-- Use the name key to set the h2 tag -->
-               <h2>...</h2>
+               <h2><%= contries[i].country<%></h2>
 
               <!-- Use the population key to set the span tag -->
-               <p>🧑‍🤝‍🧑 Population: <span>...</span></p>
+               <p>🧑‍🤝‍🧑 Population: <span><%= contries[i].population<%></span></p>
 
               <!-- Use the officialLanguage key to set the span tag -->
-               <p>🗣️ Language: <span>...</span></p>
+               <p>🗣️ Language: <span><%= contries[i].officialLanguage<%></span></p>
 
               <!-- Use the hasNuclearWeapons key to set the span tag -->
-               <p>☢️ Nuclear Weapons: <span>...</span></p>
+               <p>☢️ Nuclear Weapons: <span><%= contries[i].hasNuclearWeapons<%></span></p>
             </div>
          </div>
         <%}%>
